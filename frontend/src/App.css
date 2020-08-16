@@ -1,0 +1,38 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.brand-logo{
+  margin-left: 4vh;
+}
+.cajitas{
+  margin-top: 20vh;
+  background-color: rgba(182, 255, 233, 0.616);
+  
+  
+}
+
+.cajaGrande:hover{
+  transform: scale(1.1,1.1);
+  box-shadow: 0vw 1.1vh 1.1vh rgb(0,0,0, 0.5)!important;
+  cursor: pointer;
+  
+ 
+}
+
+.ciudades{
+  color: black;
+  text-align: center;
+  font-size:5vh;
+  font-family: 'Open Sans Condensed', sans-serif!important;
+  
+}
+body{
+  background-color: whitesmoke
+}
+.cuerpoCar{
+  width: 100%;
+  height: 50vh;
+  
+}
