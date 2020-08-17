@@ -47,12 +47,12 @@ class Header extends React.Component {
                             trigger={<a href="#!"><Icon style={{width:"20vh"}} center>account_circle</Icon></a>}
                         >
                             <a href="#">
-                                log in
+                                Log in
                            </a>
                             
                             <Divider />
                             <a href="#">
-                                sign up
+                                Sign up
                            </a>
                         </Dropdown>
                         <Dropdown
@@ -75,7 +75,7 @@ class Header extends React.Component {
                             trigger={<a href="#!"><Icon>menu</Icon></a>}
                         >
                             <a href="#">
-                                a
+                                one
                            </a>
                             <a href="#">
                                 two
