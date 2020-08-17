@@ -9,12 +9,12 @@ class Footer1 extends React.Component {
         return (
             <Footer
                 className="example #bdbdbd grey lighten-1"
-                copyrights=" © MYT 2020 | All rights reserved"
+                copyrights=" © MYtinerary 2020 | All rights reserved"
                 moreLinks={<a className="grey-text text-lighten-4 right" href="#!"><img style={{width:'5vh'}} src={Tw}></img> <img style={{width:'5vh'}} src={Fb}></img> <img style={{width:'5vh'}} src={Istg} ></img> </a>}
             >
             
                 <p className="grey-text text-lighten-4">
-                    espacio para agregar un par de links</p>
+                    Acá voy a añadir links, etc.</p>
             </Footer>
         );
     }

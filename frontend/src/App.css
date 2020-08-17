@@ -20,13 +20,13 @@
   
  
 }
-h3{
+.textoPrincipal{
   
     font-family: 'DatalegreyaDot';
     font-weight: normal;
     font-style: normal;
+    font-size: 5vh!important;
  }
-
 
 .ciudades{
   color: black;
