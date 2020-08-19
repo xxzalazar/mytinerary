@@ -1,6 +1,6 @@
 import React from 'react'
 import { Carousel } from 'react-materialize'
-import Slide from './slide'
+import Slide from './Slide'
 
 class Carrusel extends React.Component {
     state = {

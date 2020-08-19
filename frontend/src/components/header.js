@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Icon, Dropdown, Divider } from 'react-materialize'
-import Logo from '../img/logo.png'
+import Logo from '../img/myti.png'
 
 class Header extends React.Component {
     render() {

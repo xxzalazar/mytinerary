@@ -1,7 +1,11 @@
 import React from 'react';
 import './App.css';
-import Home from './pages/home'
+import Home from './pages/Home'
 import M from 'materialize-css'
+import {BrowserRouter, Route, Redirect, Link, Switch} from 'react-router-dom'
+import Cities from './pages/Cities';
+import HeaderPrueba from './components/HeaderPrueba'
+import Header from './components/Header';
 
 class App extends React.Component{
   componentDidMount(){
@@ -10,7 +14,16 @@ class App extends React.Component{
   render(){
     return (
       <div className="App">
-        <Home/>
+        
+        <BrowserRouter>
+        <Switch>
+          <Route path="/Home" component={Home}/>
+          <Route path="/Cities" component={Cities}/>
+          <Redirect to="/Home"/>
+        </Switch>
+        </BrowserRouter>
+       
+
       </div>
     );
   }
