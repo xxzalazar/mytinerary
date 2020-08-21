@@ -1,45 +1,120 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-.brand-logo{
+.brand-logo {
   margin-left: 4vh;
 }
-.cajitas{
-  margin-top: 20vh;
+.cajitas {
+  margin-top: 15vh;
   background-color: rgba(182, 255, 233, 0.616);
-  
-  
 }
 
-.cajaGrande:hover{
-  transform: scale(1.1,1.1);
-  box-shadow: 0vw 1.1vh 1.1vh rgb(0,0,0, 0.5)!important;
+.cajaGrande:hover {
+  transform: scale(1.1, 1.1);
+  box-shadow: 0vw 1.1vh 1.1vh rgb(0, 0, 0, 0.5) !important;
   cursor: pointer;
-  
- 
 }
-.textoPrincipal{
-  
-    font-family: 'DatalegreyaDot';
-    font-weight: normal;
-    font-style: normal;
-    font-size: 5vh!important;
- }
+.textoPrincipal {
+  font-family: 'DatalegreyaDot';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 3vw;
+}
+.cajaFlecha {
+  width: 50%;
+  text-align: center;
+  margin: 0%;
+}
 
-.ciudades{
+.ciudades {
   color: black;
   text-align: center;
-  font-size:5vh;
-  font-family: 'Open Sans Condensed', sans-serif!important;
-  
+  font-size: 5vh;
+  font-family: 'Open Sans Condensed', sans-serif !important;
 }
-body{
-  background-color: #F7F7F7;
+body {
+  background-color: #f7f7f7;
 }
-.cuerpoCar{
+#usuarioLogo {
+  border-radius: 25px;
+}
+.cuerpoCar {
   width: 100%;
   height: 50vh;
-  
+}
+.nave {
+  text-align: left;
+  height: 70px;
+  line-height: 70px;
+}
+.menu {
+  margin: 0 30px 0 0;
+  background-color: #f7f7f7;
+  backface-visibility: hidden;
+}
+.usuario {
+  position: absolute;
+  top: 1vh;
+  right: 20vh;
+}
+.menu a {
+  margin: 3vw;
+  clear: right;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  line-height: 70px;
+}
+.menu span {
+  color: red;
+}
+.nave label {
+  margin: 0 40px 0 0;
+  font-size: 26px;
+  line-height: 70px;
+  display: none;
+  width: 26px;
+  float: right;
+}
+#toggle {
+  display: none;
+}
+@media only screen and (max-width: 800px) {
+  .nave label {
+    display: block;
+    text-align: right;
+    cursor: pointer;
+  }
+  .menu {
+    text-align: center;
+    width: 100%;
+    display: none;
+    cursor: pointer;
+  }
+  .menu a {
+    display: block;
+    border-bottom: 1px solid black;
+    margin: 0;
+  }
+  .textoPrincipal {
+    font-size: 8vw;
+  }
+  .cajaFlecha {
+    width: 100%;
+    margin: 0;
+  }
+  .cajaTexto {
+    height: 23vw;
+  }
+  #toggle:checked + .menu {
+    display: inline-block;
+    cursor: pointer;
+  }
+  .usuario {
+    position: absolute;
+    top: 2vh;
+    left: 2vw;
+  }
 }
