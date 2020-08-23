@@ -52,7 +52,7 @@ class Cities extends React.Component {
         place.nombre
           .toLowerCase()
           .trim()
-          .indexOf(valorDeseado.toLowerCase().trim()) !== -1
+          .indexOf(valorDeseado.toLowerCase().trim()) == 0
     );
     this.setState({
       filteredPlaces: filtered,
