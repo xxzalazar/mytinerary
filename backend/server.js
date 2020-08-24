@@ -1,16 +1,20 @@
 const express = require('express');
 const cors = require('cors');
-const rutas = require('./routes/index');
+
 require('dotenv').config();
-require('./config/db');
-const server = express();
+require('./config/db'); //para conrrerlo no neecsito guardarlo en variable
 
-//middleware
-servidor.use(cors()); //con esto va aceptar peticiones de cualquier frontend aunque no sean peticiones del dominio original.
-servidor.use(express.json()); //para interpretar los body de las peticiones que me manden los clientes que consuman nuestra api.
+const servidor = express();
 
-//rutas
-servidor.use('./api', router);
+//Middleware (BUSCAR)
+servidor.use(cors());
+servidor.use(express.json());
 
-//ENRUTADOr;
-servidor.listen(4000, () => console.log('App listening on port 4000')); //esto va a ser dinámico/variable, y va a depender del puerto que le brinde el servidor en el que lo vamos a subir.
+//Rutas
+
+const rutas = require('./routes/index');
+
+//ENRUTADOR:
+servidor.use('/api', rutas);
+
+servidor.listen(4000, () => console.log('App listening on port 4000'));

@@ -1,9 +1,8 @@
 const express = require('express');
 const rutas = express.Router();
-const invitadoController = require('../controllers/invitadocontroller');
-
-rutas.route('/invitados').get(invitadoController.listarInvitados).post();
-rutas.route('/ausentes').get((req, res) => {
-  res.send('Petición GET a la ruta de ausentes');
-});
+const citiesController = require('../controllers/citiescontrollers');
+rutas
+  .route('/Cities')
+  .get(citiesController.citiesList)
+  .post(citiesController.newCity);
 module.exports = rutas;

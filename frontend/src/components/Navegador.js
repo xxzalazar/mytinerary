@@ -10,7 +10,7 @@ class Navegador extends React.Component {
           <label for="toggle"> &#9776; </label>
           <input type="checkbox" id="toggle"></input>
           <div className="menu">
-            <a href="#">Link 1</a>
+            <button className="boton">Home</button>
             <a href="#">Link 2</a>
             <a href="#">Link 3</a>
           </div>

@@ -6,5 +6,5 @@ mongoose
     useNewUrlParser: true,
     useFindAndModify: false,
   })
-  .then(() => console.log('database connected')) //si se cumple la promesa
-  .catch(() => console.log('error')); //caso contrario
+  .then(() => console.log('Database connected')) //si se cumple la promesa
+  .catch((error) => console.log(error)); //caso contrario
