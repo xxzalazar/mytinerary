@@ -3,7 +3,7 @@ import React from 'react';
 const Filtro = (props, index) => {
   return (
     <>
-      <div
+      <li
         className="cajaGrande"
         key={index}
         style={{
@@ -17,9 +17,9 @@ const Filtro = (props, index) => {
       >
         {' '}
         <div className="textoCiudades">
-          <h4 className="ciudades"> {props.place.name} </h4>{' '}
+          <h4 className="ciudades"> {props.place.city} </h4>{' '}
         </div>
-      </div>
+      </li>
     </>
   );
 };

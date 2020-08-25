@@ -9,15 +9,16 @@ const citiesController = {
     });
   },
   newCity: (req, res) => {
-    const { name, pic } = req.body;
+    const { city, country, pic } = req.body;
     const newCity = new City({
-      name: name,
+      city: city,
+      country: country,
       pic: pic,
     });
     newCity
       .save()
-      .then((ciudad) => {
-        res.json({ success: true, ciudad: ciudad });
+      .then((place) => {
+        res.json({ success: true, ciudad: place });
       })
       .catch((error) => {
         res.json({ success: false, error: error });

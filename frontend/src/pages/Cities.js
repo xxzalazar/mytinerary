@@ -21,7 +21,7 @@ class Cities extends React.Component {
     const valorDeseado = e.target.value;
     const filtered = this.state.places.filter(
       (place) =>
-        place.name
+        place.city
           .toLowerCase()
           .trim()
           .indexOf(valorDeseado.toLowerCase().trim()) == 0
@@ -45,11 +45,13 @@ class Cities extends React.Component {
               required
             />
           </div>
-          <div style={{ marginLeft: '26%', marginBottom: '5%' }}>
+          <ul
+            style={{ marginLeft: '26%', marginBottom: '5%', minHeight: '30vw' }}
+          >
             {this.state.filteredPlaces.map((place) => {
               return <Filtro key={place.name} place={place} />;
             })}
-          </div>
+          </ul>
         </div>
       </>
     );

@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Redirect, Link, Switch } from 'react-router-dom';
 import Cities from './pages/Cities';
 import Footer1 from './components/Footer';
 import Navegador from './components/Navegador';
+import Itineraries from './pages/Itineraries';
 class App extends React.Component {
   componentDidMount() {
     M.AutoInit();
@@ -16,9 +17,10 @@ class App extends React.Component {
         <Navegador />
         <BrowserRouter>
           <Switch>
-            <Route path="/Home" component={Home} />
+            <Route path="/" component={Home} />
             <Route path="/Cities" component={Cities} />
-            <Redirect to="/Home" />
+            <Route path="/itineraries" component={Itineraries}></Route>
+            <Redirect to="/" />
           </Switch>
         </BrowserRouter>
         <Footer1 />
