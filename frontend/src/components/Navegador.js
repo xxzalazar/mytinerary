@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Usuario from '../img/usuarioLogo.png';
 import { Dropdown, Divider } from 'react-materialize';
+import { NavLink } from 'react-router-dom';
 
 class Navegador extends React.Component {
   render() {
@@ -10,9 +11,11 @@ class Navegador extends React.Component {
           <label for="toggle"> &#9776; </label>
           <input type="checkbox" id="toggle"></input>
           <div className="menu">
-            <button className="boton">Home</button>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
+            <NavLink to='/Home' className="boton">Home</NavLink>
+         
+          <a className="boton" href="#">Link 2</a>
+            
+            <a href="#" className="boton">Link 3</a>
           </div>
         </div>
         <div className="usuario">

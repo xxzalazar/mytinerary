@@ -12,9 +12,9 @@ servidor.use(express.json());
 
 //Rutas
 
-const rutas = require('./routes/index');
+const routes = require('./routes/index');
 
 //ENRUTADOR:
-servidor.use('/api', rutas);
+servidor.use('/api', routes);
 
 servidor.listen(4000, () => console.log('App listening on port 4000'));

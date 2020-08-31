@@ -7,7 +7,7 @@ const itineraryController = {
       itineraries: itinerariesCity,
     });
   },
-  newItinerary: async (req, res) => {
+  newItinerary: (req, res) => {
     const {
       hashtag,
       title,
@@ -16,6 +16,7 @@ const itineraryController = {
       duration,
       price,
       cityId,
+      likes,
       comments,
     } = req.body;
     const newItinerary = new Itinerary({
@@ -26,12 +27,25 @@ const itineraryController = {
       duration: duration,
       price: price,
       commments: comments,
+      likes: likes,
       cityId: cityId,
     });
-    const savedItinerary = await newItinerary.save();
+    newItinerary
+      .save()
+      .then((itinerary) => {
+        res.json({ success: true, Itinerary: itinerary });
+      })
+      .catch((error) => {
+        res.json({ success: false, error: error });
+      });
+  },
+  getItinerary: async (req, res) => {
+    const searchedItineraries = await Itinerary.find({
+      cityId: req.params.id,
+    });
     res.json({
       success: true,
-      itineraries: savedItinerary,
+      it: searchedItineraries,
     });
   },
 };

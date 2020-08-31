@@ -1,5 +1,4 @@
 import React from 'react';
-import HeaderPrueba from '../components/HeaderPrueba';
 import Carrusel from '../components/Carousel';
 import { Link } from 'react-router-dom';
 import { Carousel } from 'react-materialize';

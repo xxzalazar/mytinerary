@@ -11,7 +11,6 @@ class Cities extends React.Component {
   async componentDidMount() {
     const response = await axios.get('http://127.0.0.1:4000/api/Cities');
     const list = response.data.cities;
-    console.log(list);
     this.setState({
       places: list,
       filteredPlaces: list,
@@ -24,7 +23,7 @@ class Cities extends React.Component {
         place.city
           .toLowerCase()
           .trim()
-          .indexOf(valorDeseado.toLowerCase().trim()) == 0
+          .indexOf(valorDeseado.toLowerCase().trim()) === 0
     );
     this.setState({
       filteredPlaces: filtered,
@@ -38,8 +37,8 @@ class Cities extends React.Component {
           <div className="search">
             <input
               type="text"
-              placeholder="     Search..."
-              name="ciudad"
+              placeholder="Search..."
+              name="city"
               id="ciudad"
               onChange={this.capturarValor}
               required
