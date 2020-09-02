@@ -1,7 +1,6 @@
 import React from 'react';
 import Carrusel from '../components/Carousel';
 import { Link } from 'react-router-dom';
-import { Carousel } from 'react-materialize';
 import Myti from '../img/myti.png';
 import FlechaD from '../img/flechaCity.png';
 
@@ -18,7 +17,11 @@ class Home extends React.Component {
           }}
         >
           <div style={{ alignSelf: 'center', height: '25vw', width: '65vw' }}>
-            <img src={Myti} style={{ width: '100%', height: '90%' }}></img>
+            <img
+              src={Myti}
+              style={{ width: '100%', height: '90%' }}
+              alt="logo"
+            ></img>
           </div>
           <div className="cajaFlecha">
             <p className="textoPrincipal">
@@ -27,7 +30,11 @@ class Home extends React.Component {
             </p>
             <Link to="/cities">
               {' '}
-              <img style={{ width: '10vh' }} src={FlechaD}></img>{' '}
+              <img
+                style={{ width: '10vh' }}
+                src={FlechaD}
+                alt="arrowCities"
+              ></img>{' '}
             </Link>
           </div>
         </div>

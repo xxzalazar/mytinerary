@@ -24,6 +24,15 @@ const citiesController = {
         res.json({ success: false, error: error });
       });
   },
+  getCity: async (req,res)=>{
+    const searchedCity= await City.findOne({
+      _id: req.params.id
+    });
+    res.json({
+      success: true,
+      city: searchedCity,
+    })
+  }
 };
 
 module.exports = citiesController;

@@ -1,83 +1,97 @@
-import axios from 'axios';
-import React, { Component, useState } from 'react';
+import React, {useState, useEffect} from "react"
+import axios from "axios"
+import Itinerary from "../components/Itinerary"
+import flechaD from "../img/flechaD.png"
+import {NavLink} from "react-router-dom"
+import {connect} from "react-redux"
+import citiesActions from "../redux/actions/citiesActions"
 
-class Itineraries extends Component {
-  state = {
-    list: [],
-  };
-  async componentDidMount() {
-    const searchId = this.props.match.params.id;
-    const response = await axios.get(
-      `http://127.0.0.1:4000/api/Itineraries/${searchId}`
-    );
-    const itinerariesList = response.data.it;
-    this.setState({
-      list: itinerariesList,
-    });
+const Itineraries = (props) => {
+  const [responseData, setResponseData] = useState([])
+  const [searchedCity, setSearchedCity] = useState({})
+
+  const searchId = props.match.params.id
+  useEffect(() => {
+    const cityData = async () => {
+      const infoC = await axios.get(
+        `http://127.0.0.1:4000/api/Cities/${searchId}`
+      )
+      setSearchedCity(infoC.data.city)
+    }
+    cityData()
+    const itData = async () => {
+      const infoIt = await axios.get(
+        `http://127.0.0.1:4000/api/Itineraries/${searchId}`
+      )
+      console.log(infoIt.data.it)
+      setResponseData(infoIt.data.it)
+    }
+    itData()
+  }, [])
+
+  /*useEffect(
+    () =>
+      axios
+        .get(`http://127.0.0.1:4000/api/Itineraries/${searchId}`)
+        .then((response) => {
+          setResponseData(response.data.it);
+        })
+        .catch((error) => {
+          console.log(error);
+        }),
+    []
+  );*/
+
+  const alertitineraries = () => {
+    if (responseData.length === 0) {
+      return (
+        <div>No hay itinerarios disponibles. Sé el primero en cargar uno!</div>
+      )
+    }
   }
-  render() {
-    const [view, setView] = useState(false);
-    const vacio = () => {
-      if (this.state.list.length === 0) {
-        return <div>kjkljlkjkljñjk</div>;
-      }
-    };
-    return (
-      <div style={{ minHeight: '60vh', margin: '5%', marginLeft: '28%' }}>
-        {vacio()}
-        {this.state.list.map((itinerary, index) => {
-          return (
-            <div
-              style={{
-                border: 'black solid 0.1vw',
-                width: '44vw',
-                minHeight: '14vw',
-                display: 'flex',
-                padding: '1%',
-                marginBottom: '1.3%',
-                background: 'white',
-              }}
-            >
-              <img
-                src={itinerary.profilePhoto}
-                style={{
-                  boxShadow: ' 0vw 1.1vh 1.1vh rgb(0, 0, 0, 0.5)',
-                  width: '6vw',
-                  height: '6vw',
-                  borderRadius: '50%',
-                  margin: '3%',
-                  border: '2px white solid',
-                }}
-              ></img>
+  return (
+    <>
+      <div
+        className="cajaGrande"
+        style={{
+          backgroundImage: `url(${searchedCity.pic})`,
+          width: "60%",
+          height: "10vw",
+          backgroundPosition: "bottom",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          marginLeft: "20%",
+        }}
+      >
+        {" "}
+        <div className="textoCiudades">
+          <h4 className="ciudades"> {searchedCity.city} </h4>{" "}
+        </div>
+      </div>
 
-              <ul style={{ marginLeft: '3.4%', flexDirection: 'row' }}>
-                <div style={{ flexDirection: 'row' }}>
-                  <li>{itinerary.rating}</li>
-                  <li>{itinerary.duration} hs.</li>
-                  <li>{itinerary.price}</li>
-                </div>
-                <li>{itinerary.hashtag}</li>
-              </ul>
-              <button
-                style={{ height: '2vw', alignSelf: 'center' }}
-                onClick={() => {
-                  setView(!view);
-                }}
-              >
-                {' '}
-                {view ? 'View more' : 'View less'}
-              </button>
-              {view && (
-                <div>
-                  <h1>contenido oculto</h1>
-                </div>
-              )}
-            </div>
-          );
+      <div
+        style={{
+          minHeight: "60vh",
+          margin: "5%",
+          marginLeft: "23%",
+          alignItems: "center",
+          width: "60%",
+        }}
+      >
+        {alertitineraries()}
+        {responseData.map((itinerary) => {
+          return <Itinerary itinerary={itinerary} />
         })}
       </div>
-    );
+      <NavLink to="/Cities">
+        <img src={flechaD} style={{width: "10vw", height: "10vw"}} />
+      </NavLink>
+    </>
+  )
+}
+const mapStateToProps = (state) => {
+  return {
+    getInfo: citiesActions.getInfo,
   }
 }
-
-export default Itineraries;
+export default connect(mapStateToProps, mapDispatchToprops)(Itineraries)

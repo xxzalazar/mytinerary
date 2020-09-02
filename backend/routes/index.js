@@ -8,6 +8,7 @@ routes
   .post(citiesController.newCity);
 
 routes.route('/Itineraries/:id').get(itineraryController.getItinerary);
+routes.route('/Cities/:id').get(citiesController.getCity);
 
 routes
   .route('/Itineraries')
