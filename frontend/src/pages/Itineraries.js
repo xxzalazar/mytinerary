@@ -7,11 +7,21 @@ import {connect} from "react-redux"
 import citiesActions from "../redux/actions/citiesActions"
 
 const Itineraries = (props) => {
-  const [responseData, setResponseData] = useState([])
-  const [searchedCity, setSearchedCity] = useState({})
-
   const searchId = props.match.params.id
+  const [responseData, setResponseData] = useState([])
   useEffect(() => {
+    const itData = async () => {
+      const infoIt = await axios.get(
+        `http://127.0.0.1:4000/api/Itineraries/${searchId}`
+      )
+      console.log(infoIt.data.it)
+      setResponseData(infoIt.data.it)
+    }
+    itData()
+    props.getCity(searchId)
+  }, [])
+
+  /*useEffect(() => {
     const cityData = async () => {
       const infoC = await axios.get(
         `http://127.0.0.1:4000/api/Cities/${searchId}`
@@ -27,7 +37,7 @@ const Itineraries = (props) => {
       setResponseData(infoIt.data.it)
     }
     itData()
-  }, [])
+  }, [])*/
 
   /*useEffect(
     () =>
@@ -54,7 +64,7 @@ const Itineraries = (props) => {
       <div
         className="cajaGrande"
         style={{
-          backgroundImage: `url(${searchedCity.pic})`,
+          backgroundImage: `url(${props.city.pic})`,
           width: "60%",
           height: "10vw",
           backgroundPosition: "bottom",
@@ -65,10 +75,9 @@ const Itineraries = (props) => {
       >
         {" "}
         <div className="textoCiudades">
-          <h4 className="ciudades"> {searchedCity.city} </h4>{" "}
+          <h4 className="ciudades"> {props.city.city} </h4>{" "}
         </div>
       </div>
-
       <div
         style={{
           minHeight: "60vh",
@@ -91,7 +100,11 @@ const Itineraries = (props) => {
 }
 const mapStateToProps = (state) => {
   return {
-    getInfo: citiesActions.getInfo,
+    city: state.cities.city,
   }
 }
-export default connect(mapStateToProps, mapDispatchToprops)(Itineraries)
+const mapDispatchToProps = {
+  getCity: citiesActions.getCity,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Itineraries)

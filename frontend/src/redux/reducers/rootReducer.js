@@ -1,6 +1,7 @@
-const {conbineReducers} = require("redux")
 import citiesReducer from "./citiesReducer"
-const rootReducer = conbineReducers({
+
+const {combineReducers} = require("redux")
+const rootReducer = combineReducers({
   cities: citiesReducer,
 })
 export default rootReducer

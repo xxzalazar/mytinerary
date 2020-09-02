@@ -1,13 +1,25 @@
+import axios from "axios"
 const citiesActions = {
-  getinfo: () => {
+  getInfo: () => {
+    return async (dispatch, getState) => {
+      const response = await axios.get(`http://127.0.0.1:4000/api/Cities`)
+      const info = response.data.cities
+      dispatch({
+        type: "GETINFO",
+        payload: info,
+      })
+    }
+  },
+  getCity: (searchId) => {
     return async (dispatch, getState) => {
       const response = await axios.get(
         `http://127.0.0.1:4000/api/Cities/${searchId}`
       )
-      const info = response.data.city
+      const cityInfo = response.data.city
+
       dispatch({
-        type: "GETINFO",
-        payload: info,
+        type: "GETCITY",
+        payload: cityInfo,
       })
     }
   },
