@@ -1,0 +1,12 @@
+.formsBox {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: inherit;
+    height: inherit;
+}
+.form input, button{
+    padding: 0.5vw 1.3vw!important;
+    margin-top:3%!important;
+    border: solid 0.1vw black!important;
+}

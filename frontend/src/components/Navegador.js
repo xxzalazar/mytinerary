@@ -52,10 +52,9 @@ class Navegador extends React.Component {
               </a>
             }
           >
-            <a href="#">Log In</a>
-            <a href="#">two</a>
+            <NavLink to='/Sign-In'> Sign In</NavLink>
             <Divider />
-            <a href="#">Sign Up</a>
+            <NavLink to='/Sign-Up'> Sign Up</NavLink>
           </Dropdown>
         </div>
       </>

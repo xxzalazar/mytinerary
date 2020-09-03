@@ -6,6 +6,9 @@ import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import Cities from './pages/Cities';
 import Navegador from './components/Navegador';
 import Itineraries from './pages/Itineraries';
+import SignUp from './pages/SignUp'
+import SignIn from './pages/SignIn'
+
 class App extends React.Component {
   componentDidMount() {
     M.AutoInit();
@@ -19,6 +22,8 @@ class App extends React.Component {
             <Route exact path="/" component={Home} />
             <Route path="/Cities" component={Cities} />
             <Route path="/Itineraries/:id" component={Itineraries} />
+            <Route path="/Sign-In" component={SignIn} />
+            <Route path="/Sign-Up" component={SignUp} />
             <Redirect to="/" />
           </Switch>
         </BrowserRouter>
