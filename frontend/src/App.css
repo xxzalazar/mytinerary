@@ -54,83 +54,7 @@ html body {
 body {
   background-color: #f7f7f7;
 }
-#usuarioLogo {
-  border-radius: 0.2vw;
-}
-.cuerpoCar {
-  width: 100%;
-  height: 50vh;
-}
-.nave {
-  text-align: left;
-  height: 70px;
-  line-height: 70px;
-}
-.menu {
-  margin: 0.2% 1% 0 1%;
-  background-color: #f7f7f7;
-  backface-visibility: hidden;
-}
-.usuario {
-  position: absolute;
-  top: 1.1vh;
-  right: 20vh;
-}
-.menu a {
-  margin: 1.2vw;
-  clear: right;
-  text-decoration: none;
-  color: whitesmoke;
-  line-height: 70px;
-}
-
-.menu span {
-  color: red;
-}
-.nave label {
-  margin: 0 40px 0 0;
-  font-size: 26px;
-  line-height: 70px;
-  display: none;
-  width: 26px;
-  float: right;
-}
-#toggle {
-  display: none;
-}
-@media only screen and (min-width: 800px) {
-  .boton {
-    background-color: black;
-    color: whitesmoke;
-    border: solid black 2px;
-    border-radius: 39px;
-    padding: 0.5% 3%;
-  }
-  .boton:hover {
-    background-color: rgba(179, 222, 226, 0.952);
-    color: black;
-    transition: 1s;
-  }
-}
 @media only screen and (max-width: 800px) {
-  .nave label {
-    display: block;
-    text-align: center;
-    cursor: pointer;
-  }
-  .menu {
-    margin-left: 10%;
-    text-align: center;
-    width: 80%;
-    display: none;
-    cursor: pointer;
-  }
-  .menu a {
-    color: black;
-    display: block;
-    border-bottom: 1px solid black;
-    margin: 0;
-  }
   .textoPrincipal {
     font-size: 8vw;
   }
@@ -140,16 +64,5 @@ body {
   }
   .cajaTexto {
     height: 23vw;
-  }
-  #toggle:checked + .menu {
-    display: inline-block;
-    cursor: pointer;
-  }
-  .usuario {
-    position: absolute;
-    top: 3vw;
-    left: 5vw;
-    width: 40%;
-    height: 40%;
   }
 }

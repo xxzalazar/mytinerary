@@ -3,6 +3,8 @@ import Carrusel from '../components/Carousel';
 import { Link } from 'react-router-dom';
 import Myti from '../img/myti.png';
 import FlechaD from '../img/flechaCity.png';
+import "materialize-css/dist/css/materialize.min.css"
+import "materialize-css/dist/js/materialize.min.js"
 
 class Home extends React.Component {
   render() {

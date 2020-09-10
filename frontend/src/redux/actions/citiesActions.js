@@ -1,27 +1,27 @@
 import axios from "axios"
+
 const citiesActions = {
-  getInfo: () => {
+  getCitiesList: () => {
     return async (dispatch, getState) => {
       const response = await axios.get(`http://127.0.0.1:4000/api/Cities`)
       const info = response.data.cities
+      
       dispatch({
-        type: "GETINFO",
+        type: "GETCITIES",
         payload: info,
       })
     }
   },
-  getCity: (searchId) => {
-    return async (dispatch, getState) => {
-      const response = await axios.get(
-        `http://127.0.0.1:4000/api/Cities/${searchId}`
-      )
-      const cityInfo = response.data.city
-
+  getCity: (cityId)=>{
+    return(dispatch, getState)=>{
+      const data= getState()
+      const searchedCity= data.cities.citiesList.filter((city) => city._id === cityId)
+      
       dispatch({
         type: "GETCITY",
-        payload: cityInfo,
+        payload: searchedCity[0],
       })
     }
-  },
+  }
 }
 export default citiesActions

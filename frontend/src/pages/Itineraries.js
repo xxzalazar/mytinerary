@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
+import citiesActions from "../redux/actions/citiesActions"
 import Itinerary from "../components/Itinerary"
 import arrowLeft from "../img/arrowLeft.png"
 import { NavLink } from "react-router-dom"
 import { connect } from "react-redux"
-import citiesActions from "../redux/actions/citiesActions"
 import '../css/filter.css'
 
 const Itineraries = props => {
@@ -13,19 +13,21 @@ const Itineraries = props => {
 	useEffect(() => {
 		itData()
 		props.getCity(searchId)
+		console.log(props.city)
+		
 	}, [])
 	const itData = async () => {
 		const infoIt = await axios.get(
 			`http://127.0.0.1:4000/api/Itineraries/${searchId}`
 		)
-		console.log(infoIt.data.it)
 		setResponseData(infoIt.data.it)
 	}
 
 	const alertitineraries = () => {
+
 		if (responseData.length === 0) {
 			return (
-				<div>No hay itinerarios disponibles. Sé el primero en cargar uno!</div>
+				<div style={{textAlign:'center', width:'100%'}}><h4>No hay itinerarios disponibles. Sé el primero en cargar uno!</h4></div>
 			)
 		}
 	}
@@ -38,25 +40,25 @@ const Itineraries = props => {
 					<h4 className="ciudades"> {props.city.city} </h4>
 				</div>
 			</div>
-			<div style={{	minHeight: "50wh",	alignItems: "center", width: "60%",	}}>
+			<div style={{	minHeight: "60vh",	alignItems: "center", width: "100%",	}}>
 				{alertitineraries()}
-				{responseData.map(itinerary => {
-					return <Itinerary itinerary={itinerary} />
+				{responseData.map((itinerary, index) => {
+					return <Itinerary key={index} itinerary={itinerary} />
 				})}
 			</div>
 			<NavLink to="/Cities">
-				<img src={arrowLeft} style={{ width: "10vw", height: "10vw", marginLeft:'50%' }} />
+				<img src={arrowLeft} style={{ width: "10vw", height: "10vw", marginLeft:'43%' }} />
 			</NavLink>
 		</>
 	)
 }
-const mapStateToProps = state => {
-	return {
-		city: state.cities.city,
+
+const mapStateToProps= state=>{
+	return{
+	  city: state.cities.city 
 	}
 }
-const mapDispatchToProps = {
-	getCity: citiesActions.getCity,
+const mapDispatchToProps ={
+	getCity: citiesActions.getCity
 }
-
 export default connect(mapStateToProps, mapDispatchToProps)(Itineraries)

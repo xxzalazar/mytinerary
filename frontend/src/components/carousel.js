@@ -1,8 +1,14 @@
 import React from 'react';
 import { Carousel } from 'react-materialize';
 import Slide from './Slide';
+import M from 'materialize-css';
+import "materialize-css/dist/css/materialize.min.css"
+import "materialize-css/dist/js/materialize.min.js"
 
 class Carrusel extends React.Component {
+  componentDidMount(){
+    M.AutoInit();
+  }
   state = {
     places: [
       [
@@ -74,7 +80,7 @@ class Carrusel extends React.Component {
         },
         {
           pic:
-            'https://www.luxorandaswan.com/es/featured/3%20Days%202%20Nights%20Short%20vacations.jpg',
+            'https://www.state.gov/wp-content/uploads/2019/04/Egypt-2109x1406.jpg',
           nombre: 'Egypt',
         },
         {
@@ -98,7 +104,7 @@ class Carrusel extends React.Component {
             carouselId="Carousel-2"
             className="white-text center "
             options={{
-              duration: 100,
+              duration: 2,
               fullWidth: false,
               indicators: true,
               dist: -100,

@@ -1,0 +1,37 @@
+.itineraryBox{
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    border: 0.1vw solid black;
+    margin:2% 0%;
+    margin-left:10%;
+    background-color:rgba(168, 167, 167, 0.883);
+    min-height: 17vh;    
+    box-shadow: 0vw 1.1vh 1.1vh rgb(0, 0, 0, 0.5);
+}
+.botones{
+    width:100%;
+}
+.itObjects{
+    display: flex;
+    flex-direction: row;
+}
+.itTitle{
+    width:100%;
+
+}
+.itTitle p{
+    font-family: "DatalegreyaDot";
+    font-size: 2em;
+    padding-left: 14vw;
+}
+.itPrototype{
+    width:100%
+}
+@media only screen and (min-width: 800px){
+.itineraryBox{
+    width: 50vw;
+    margin-left: 25%;
+}  
+
+}

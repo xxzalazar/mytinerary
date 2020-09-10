@@ -1,21 +1,20 @@
 const Activities = require('../models/Activities');
 const activitiesController = {
-  itineraries: async (req, res) => {
+  activitiesList: async (req, res) => {
     const activitiesData = await Activities.find();
     res.json({
       success: true,
-      itineraries: activitiesData,
+      activities: activitiesData,
     });
   },
   newActivities: (req, res) => {
-    const{ activities, itineraryId } = req.body;
-    const activities = new Activities({
-      activities: activities,
+    const{ activityTitle, activityPic, itineraryId } = req.body;
+    const activitiesData = new Activities({
+      activityTitle: activityTitle,
+      activityPic: activityPic,
       itineraryId: itineraryId,
     });
-    newActivities
-      .save()
-      .then((activities) => {
+    activitiesData.save().then((activities) => {
         res.json({ success: true, activities: activities });
       })
       .catch((error) => {
@@ -23,7 +22,7 @@ const activitiesController = {
       });
   },
   getActivities: async (req, res) => {
-    const searchedAct = await Activities.find({
+    const searchedAct = await Activities.findOne({
       itineraryId: req.params.id,
     });
     res.json({
