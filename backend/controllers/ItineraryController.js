@@ -48,5 +48,20 @@ const itineraryController = {
       it: searchedItineraries,
     });
   },
+  addComment: async(req, res)=>{
+    const comment= req.body 
+    const itineraryComments= await Itinerary.findOneAndUpdate({_id: comment.itineraryId},{$push:{comments:comment}})
+    res.json({
+      success: true
+    })
+  },
+  deleteComment: (req,res)=>{
+    const deletedComment= req.body
+    console.log(deletedComment)
+    Itinerary.update({_id: deletedComment.itineraryId},{$pullAll:{comments:[{...deletedComment}]}})
+    .then((resp) => res.json({success:true}))
+     
+  },
+  
 };
 module.exports = itineraryController;

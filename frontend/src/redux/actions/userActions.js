@@ -35,7 +35,21 @@ const userActions = {
                 type:"LOG_OUT",
             })
         }
-
+    },
+    newComment: (comment)=>{
+        return async (dispatch, getState) =>{
+            const response = await axios.put("http://127.0.0.1:4000/api/itineraries/", comment)
+            
+    }},
+    getItinerary: (searchId)=>{
+      return async(dispatch, getState)=>{
+        const response = await axios.get(`http://127.0.0.1:4000/api/Itineraries/${searchId}`)
+        console.log(response.data)
+        dispatch({
+            type:"ITINERARY",
+            payload: response.data
+        })
+      } 
     }
 }
 export default userActions

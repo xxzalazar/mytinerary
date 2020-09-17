@@ -10,22 +10,24 @@ import '../css/filter.css'
 const Itineraries = props => {
 	const searchId = props.match.params.id
 	const [responseData, setResponseData] = useState([])
+	const [loading, setLoading] = useState(true)
 	useEffect(() => {
 		itData()
 		props.getCity(searchId)
-		console.log(props.city)
-		
 	}, [])
 	const itData = async () => {
 		const infoIt = await axios.get(
 			`http://127.0.0.1:4000/api/Itineraries/${searchId}`
 		)
 		setResponseData(infoIt.data.it)
+		setLoading(false)
 	}
 
 	const alertitineraries = () => {
-
-		if (responseData.length === 0) {
+		if(loading){
+			return <div style={{textAlign:'center', width:'100%'}}><h4>loading...</h4></div>
+	
+		}else if (responseData.length === 0) {
 			return (
 				<div style={{textAlign:'center', width:'100%'}}><h4>No hay itinerarios disponibles. Sé el primero en cargar uno!</h4></div>
 			)

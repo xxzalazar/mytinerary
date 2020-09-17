@@ -9,7 +9,7 @@ const itinerarySchema = new mongoose.Schema({
   price: { type: Number, required: true },
   cityId: { type: mongoose.Schema.ObjectId, ref: "city" },
   likes: { type: Number, default: 0 },
-  comments: { type: Array, default: [] },
+  comments: { type: Array},
 });
 const Itinerary = mongoose.model('itinerary', itinerarySchema);
 module.exports = Itinerary;

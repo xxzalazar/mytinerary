@@ -22,12 +22,12 @@ const activitiesController = {
       });
   },
   getActivities: async (req, res) => {
-    const searchedAct = await Activities.findOne({
+    const searchedAct = await Activities.find({
       itineraryId: req.params.id,
     });
     res.json({
       success: true,
-      it: searchedAct,
+      activity: searchedAct,
     });
   },
 };

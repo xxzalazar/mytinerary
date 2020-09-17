@@ -13,12 +13,11 @@ routes
 routes.route('/Cities/:id').get(citiesController.getCity);
 routes.route('/Activities/:id').get(activitiesController.getActivities)
 routes.route('/Activities').get(activitiesController.activitiesList).post(activitiesController.newActivities)
+routes.route('/comments').put(itineraryController.deleteComment)
+routes.route('/Itineraries/:id').get(itineraryController.getItinerary)
+routes.route('/Itineraries').get(itineraryController.itineraries).post(itineraryController.newItinerary).put(itineraryController.addComment)
 
-routes.route('/Itineraries/:id').get(itineraryController.getItinerary);
-routes
-  .route('/Itineraries')
-  .get(itineraryController.itineraries)
-  .post(itineraryController.newItinerary);
 routes.route('/login').post(userControllers.loginUser)
 routes.route('/user').post(validator.validateNewUser, userControllers.newUser) 
+
 module.exports = routes;

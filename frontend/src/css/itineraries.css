@@ -17,17 +17,34 @@
     flex-direction: row;
 }
 .itTitle{
-    width:100%;
+    width:80%;
 
 }
 .itTitle p{
     font-family: "DatalegreyaDot";
     font-size: 2em;
-    padding-left: 14vw;
-}
+    text-align: center;
+    align-self: center;}
 .itPrototype{
     width:100%
 }
+div.actrender {
+    background-color: #333;
+    overflow: auto;
+    white-space: nowrap;
+  }
+  
+  div.actrender a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+  }
+  
+  div.actrender a:hover {
+    background-color: #777;
+  }
 @media only screen and (min-width: 800px){
 .itineraryBox{
     width: 50vw;

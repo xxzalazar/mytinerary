@@ -1,8 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Carousel } from 'react-materialize';
-import M from 'materialize-css';
-import "materialize-css/dist/css/materialize.min.css"
-import "materialize-css/dist/js/materialize.min.js"
 import axios from 'axios';
 
 const Activities= (props)=>{
@@ -11,37 +7,19 @@ const Activities= (props)=>{
       const itineraryData  = await axios.get(
         `http://127.0.0.1:4000/api/Activities/${props.data}`
       )
-      console.log(itineraryData)
-      const informacion = itineraryData.data.it
-      setItInfo(informacion)
-    }
-
+      setItInfo(itineraryData.data.activity)
+    }   
 useEffect(()=>{
-  M.AutoInit()
     content()
   }, []) 
   
-  
 return (<>
-    <Carousel
-  carouselId="Carousel-2"
-  className="white-text center"
-  options={{
-    fullWidth: true,
-    indicators: true
-  }}
->
-   <div className="red">
-  <h2>
-    {itInfo.activityTitle}
-  </h2>
-  <p>
-    dd
-  </p>
-</div>kjhjhj
-  
-</Carousel>
- </>)
+    {itInfo.map(activity =>{
+       return (<div style={{backgroundImage: `url(${activity.activityPic})`, marginLeft:'3%',backgroundRepeat:'no-repeat', backgroundSize:'cover', height:"15em", width:"15em", display: "inline-block"}}>
+      <div style={{backgroundColor:"white"}} ><p>{activity.activityTitle}</p></div>
+      </div>)
+    })}
+    </>)
 }
 
 export default Activities

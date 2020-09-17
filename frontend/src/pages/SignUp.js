@@ -6,24 +6,20 @@ import { connect } from "react-redux";
 
 const SignUp = (props)=>{
     const [signUp, setSignUp]= useState({})
+
     const data= e=>{
         const name= e.target.name
         const valor= e.target.value
         setSignUp({...signUp,[name]: valor})
     }
-   
-        
-   
+
     const sendData =async (e) =>{
         e.preventDefault()
         const newUser ={...signUp }
         const newAcc= await props.newAccount(newUser)
-        if(props.token){
-        alert('Welcome to MYtinerary')
-       props.history.push('/')}
+       props.history.push('/')
 
     }
-    //no te olvides de centrar los items
     return(<><div style={{width:"60%", marginLeft:"30%", marginBottom:"5%"}}>
         <div className="formsBox">
             <div className="formsTitle"><h3>Welcome to Mytinerary</h3> <p>I'm a member! <button> <NavLink to="/Sign-In">Sign In</NavLink></button></p></div>
