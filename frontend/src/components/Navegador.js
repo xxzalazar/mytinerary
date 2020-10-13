@@ -21,11 +21,11 @@ const Navegador =(props)=> {
             </NavLink>
 
             <a className="boton" href="#">
-              Link 2
+              Cities
             </a>
 
             <a href="#" className="boton">
-              Link 3
+              faqs
             </a>
           </div>
         </div>

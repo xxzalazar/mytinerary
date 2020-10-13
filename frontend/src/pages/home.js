@@ -18,7 +18,7 @@ class Home extends React.Component {
             alignItems: 'center',
           }}
         >
-          <div style={{ alignSelf: 'center', height: '25vw', width: '65vw' }}>
+          <div style={{ alignSelf: 'center', width: '55vw' }}>
             <img
               src={Myti}
               style={{ width: '100%', height: '90%' }}

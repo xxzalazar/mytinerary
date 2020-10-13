@@ -13,8 +13,6 @@ class Footer1 extends React.Component {
                 moreLinks={<a className="grey-text text-lighten-4 right" href="#!"><img style={{width:'5vh'}} src={Tw}></img> <img style={{width:'5vh'}} src={Fb}></img> <img style={{width:'5vh'}} src={Istg} ></img> </a>}
             >
             
-                <p className="grey-text text-lighten-4">
-                    Acá voy a añadir links, etc.</p>
             </Footer>
         );
     }

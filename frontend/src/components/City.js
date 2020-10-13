@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const Filtro = (props, index) => {
+const City = (props, index) => {
   return (
     <>
       <NavLink to={`/itineraries/${props.place._id}`}>
@@ -27,4 +27,4 @@ const Filtro = (props, index) => {
   );
 };
 
-export default Filtro;
+export default City;

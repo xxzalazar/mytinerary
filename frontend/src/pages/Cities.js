@@ -1,5 +1,5 @@
 import React, { useEffect, useState} from 'react';
-import Filtro from '../components/Filtro';
+import City from '../components/City';
 import { connect } from 'react-redux';
 import citiesActions from '../redux/actions/citiesActions';
 import '../css/filter.css';
@@ -27,14 +27,16 @@ const filter= (cities, value)=>{
     <>
       <div>
         <h1>Cities</h1>
+        <div style={{marginLeft:"22%"}}>
         <div className="search">
-          <input type="text"  placeholder="Search..."  name="city"  id="ciudad"  onChange={getValue} required/>
+          <input type="text"  placeholder="Search city..."  name="city"  id="ciudad"  onChange={getValue} required/>
         </div>
-        <ul  style={{ marginLeft: '26%', marginBottom: '5%', minHeight: '30vw' }}>
+        <ul  style={{marginBottom: '5%', marginLeft:"2.5%" ,minHeight: '30vw' }}>
           {filter(props.citiesList, filteredData).map((place) => {
-            return <Filtro key={place.city} place={place} />;
+            return <City key={place.city} place={place} />;
           })}
         </ul>
+        </div>
       </div>
     </>
   );

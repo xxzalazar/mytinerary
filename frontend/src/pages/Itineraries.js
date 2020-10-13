@@ -6,6 +6,7 @@ import arrowLeft from "../img/arrowLeft.png"
 import { NavLink } from "react-router-dom"
 import { connect } from "react-redux"
 import '../css/filter.css'
+import loadinggif from "../img/loadinggif.gif"
 
 const Itineraries = props => {
 	const searchId = props.match.params.id
@@ -25,17 +26,25 @@ const Itineraries = props => {
 
 	const alertitineraries = () => {
 		if(loading){
-			return <div style={{textAlign:'center', width:'100%'}}><h4>loading...</h4></div>
+			return (<div style={{ margin:"30vh 38vw", width: '50vw' }}>
+            <img
+              src={loadinggif}
+              style={{ width: '40%'}}
+              alt="loading..."
+            ></img>
+          </div>)
 	
 		}else if (responseData.length === 0) {
 			return (
-				<div style={{textAlign:'center', width:'100%'}}><h4>No hay itinerarios disponibles. Sé el primero en cargar uno!</h4></div>
+				<div style={{textAlign:'center', width:'100%'}}><h4>There's nothing to see here.</h4>
+				<p>Be te first, charge an itinerary</p>
+				</div>
 			)
 		}
 	}
 	return (
 		<>
-			<div
+		    <div
 				className="bannerCity"
 				style={{backgroundImage: `url(${props.city.pic})`}}>
 				<div className="textoCiudades">
@@ -47,10 +56,11 @@ const Itineraries = props => {
 				{responseData.map((itinerary, index) => {
 					return <Itinerary key={index} itinerary={itinerary} />
 				})}
-			</div>
-			<NavLink to="/Cities">
-				<img src={arrowLeft} style={{ width: "10vw", height: "10vw", marginLeft:'43%' }} />
+				<NavLink to="/Cities">
+				<img src={arrowLeft} style={{ width: "10vw", marginLeft:'43%' }} />
 			</NavLink>
+			</div>
+			
 		</>
 	)
 }
