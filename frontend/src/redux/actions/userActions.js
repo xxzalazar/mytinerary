@@ -18,9 +18,9 @@ const userActions = {
     loggedUser: user =>{
         return async (dispatch,getState) =>{
             const response = await axios.post("http://127.0.0.1:4000/api/login", user)
-            console.log(response)
+            console.log(response.data.message)
             if(!response.data.success){
-                alert(response.data.message)
+                return response.data.message
             }else{
                 dispatch({
                     type:"LOG_USER",

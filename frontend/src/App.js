@@ -8,7 +8,7 @@ import Navegador from './components/Navegador';
 import Itineraries from './pages/Itineraries';
 import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
-import Footer1 from './components/Footer';
+import Email from './components/Email';
 
 class App extends React.Component {
   componentDidMount() {
@@ -25,10 +25,11 @@ class App extends React.Component {
             <Route path="/Itineraries/:id" component={Itineraries} />
             <Route path="/Sign-In" component={SignIn} />
             <Route path="/Sign-Up" component={SignUp} />
+            <Route path="/new-pass" component={Email}/>
             <Redirect to="/" />
           </Switch>
         </BrowserRouter>
-        <Footer1/>
+       
       </div>
     );
   }

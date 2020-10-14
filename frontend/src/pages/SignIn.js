@@ -1,20 +1,12 @@
 import React, { useState } from 'react';
-import "../css/forms.css";
 import {NavLink} from 'react-router-dom';
 import userActions from '../redux/actions/userActions';
 import { connect } from "react-redux";
-import { GoogleLogin } from 'react-google-login';
-
 
 const SignIn = (props)=>{
     const [signIn, setSignIn] = useState({})
-    const responseGoogle = e =>{
-        props.loginUser({
-            user: e.profileObj.email,
-            password: e.profileObj.googleId
-        })
-    }
-
+    const [load, setLoad]= useState(false)
+    const [err, setErr]=useState()
     const data= e=>{
         const name= e.target.name
         const valor= e.target.value
@@ -23,29 +15,36 @@ const SignIn = (props)=>{
     const sendData = async e=>{
         e.preventDefault()
         if( signIn.username === '' || signIn.password === ''){
-            alert("todos los campos son obligatorios")
+            return (<>{setLoad(true) &
+            setErr(<span style={{color:"red"}}>All fields are required.</span>)}
+            </>)
         }else{
+            setLoad(false)
           const logIn ={...signIn}
           const loggedUser = await props.loginUser(logIn)
-            props.history.push('/')
+          if(loggedUser){
+            setLoad(true)
+            setErr(<span style={{color:"red"}}>{loggedUser}</span>)
+          }else{
+            props.history.push('/') 
+          }
         }
 
     }
     return(<>
-    <div className="formsBox">
+    <div style={{width:'100', display: 'flex',flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
         <div className="formsTitle"><h3>Welcome to Mytinerary</h3> <p>Not a member? <button> <NavLink to="/Sign-Up">Sign Up!</NavLink></button></p></div>
-        <div className="form">
-        <input type="text" name="username" onChange={data} placeholder="Username"/>
-        <input type="password" name="password" onChange={data} placeholder="Password"/>
-        <button onClick={sendData} > Sign In </button> 
-        <GoogleLogin
-    clientId="941179007513-cl7ib868q7un2tkvf2c17cp5k1t8haoi.apps.googleusercontent.com"
-    buttonText="Login"
-    onSuccess={responseGoogle}
-    onFailure={responseGoogle}
-    cookiePolicy={'single_host_origin'} style={{borderRadius:"25px"}}
-  />  
-        </div>
+        {load && err}
+        <div>
+            <label name="username">Username:</label>
+            <input type="text" name="username" onChange={data} placeholder="Username"  style={{border:"1.5px solid black", paddingLeft:"1vw",backgroundColor:"white" }}/>
+            <label name="password">Password:</label>
+            <input type="password" name="password" onChange={data} placeholder="Password"  style={{border:"1.5px solid black", paddingLeft:"1vw", backgroundColor:"white"}}/>
+            <div style={{display:"flex",alignItems: "center", flexDirection:"column"}}><button onClick={sendData} > Sign In </button> <NavLink to="/new-pass"><a style={{alignSelf:"center", textAlign:"center"}}>Forgot password?</a></NavLink></div>
+           
+         </div>
+         <p style={{marginTop:"20vh"}}>© MYtinerary 2020 | All rights reserved</p>
+         
     </div>
     </>)
    
@@ -57,6 +56,7 @@ const mapStateToProps= state=>{
           token: state.user.token,
           profilePic: state.user.profilePic,
           username: state.user.username,
+          success: state.user.success
         }
 }
 const mapDispatchToProps ={

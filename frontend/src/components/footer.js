@@ -12,7 +12,6 @@ class Footer1 extends React.Component {
                 copyrights=" © MYtinerary 2020 | All rights reserved"
                 moreLinks={<a className="grey-text text-lighten-4 right" href="#!"><img style={{width:'5vh'}} src={Tw}></img> <img style={{width:'5vh'}} src={Fb}></img> <img style={{width:'5vh'}} src={Istg} ></img> </a>}
             >
-            
             </Footer>
         );
     }

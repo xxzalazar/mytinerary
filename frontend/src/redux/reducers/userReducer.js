@@ -2,6 +2,7 @@ const initialState={
     token:'',
     username:'',
     profilePic:'',
+    success:'',
     itinerary:[]
 }
 const userReducer = (state = initialState, action)=>{
@@ -10,7 +11,7 @@ const userReducer = (state = initialState, action)=>{
     switch(action.type){
         case "LOG_USER":
             return {
-                ...state, token: action.payload.token, username: action.payload.username, profilePic: action.payload.profilePic,
+                ...state, token: action.payload.token, username: action.payload.username, profilePic: action.payload.profilePic, succes: action.payload.success
             }
         case "LOG_OUT":
             return {
